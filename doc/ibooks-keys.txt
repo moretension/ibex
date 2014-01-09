@@ -1,0 +1,11 @@
+[
+    {"BKAllocatedSize" : "book file size in bytes"},
+    {"BKDisplayName" : "displayed book name"},
+    {"BKGeneratedItemId" : "hash value identifying book, used as book name on the filesystem"},
+    {"BKGenerationCount" : "????"},
+    {"BKITunesMigratedMetadata" : "dictionary, many keys describing book info as it was stored by iTunes, prior to Mavericks release of iBooks"},
+    {"BKInsertionDate" : "a floating point value representing absolute time in seconds since 12:00am Jan 1, 2001 GMT (i.e., an NSDate value)"},
+    {"artistName" : "author, looks like a holdover from iTunes"},
+    {"itemName" : "Human-readable title, seems to be used over BKDisplayName?"},
+    {"path" : "local filesystem path to the book"}
+]
