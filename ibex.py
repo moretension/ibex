@@ -17,7 +17,7 @@ class IbexBook(object):
 
     def __getattr__(self, name):
 	attr = self.book_d[name]
-	if attr.__class__ == NSString.__class__:
+	if isinstance(attr, NSString):
 	    return attr.UTF8String()
 	else:
 	    return attr
