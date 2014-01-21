@@ -69,7 +69,7 @@ class IbexBook(object):
                 os_walker = os.walk('.')
                 (root, subdirs, files) = next(os_walker)
                 if not 'META-INF' in subdirs:
-                    """ XXX still create zipfile? """
+                    # XXX still create zipfile?
                     print("%s: missing META-INF subdirectory in %s" %
                                 (self.BKDisplayName, self.path),
                                 file=sys.stderr)
@@ -77,7 +77,7 @@ class IbexBook(object):
                 with zipfile.ZipFile(export_target, mode='w',
                                         compression=zipfile.ZIP_STORED) as zf:
                     try:
-                        """ mimetype must be first entry, uncompressed """
+                        # mimetype must be first entry, uncompressed
                         mt_idx = files.index('mimetype')
                         files.pop(mt_idx)
                         zf.write('mimetype')
@@ -85,18 +85,18 @@ class IbexBook(object):
                         print("%s: missing mimetype file" % (self.path,),
                                         file=sys.stderr)
 
-                    """ remove iTunesMetadata.plist, iBooks will generate it """
+                    # remove iTunesMetadata.plist, iBooks will generate it
                     try:
                         itmd_idx = files.index('iTunesMetadata.plist')
                         files.pop(itmd_idx)
                     except:
                         pass
 
-                    """ write remaining files at directory depth 0... """
+                    # write remaining files at directory depth 0...
                     for f in files:
                         zf.write(f, compress_type=zipfile.ZIP_DEFLATED)
 
-                    """ the rest of the hierarchy can be added in walk order """
+                    # the rest of the hierarchy can be added in walk order
                     for (root, subdirs, files) in os_walker:
                         for f in files:
                             zf.write(os.path.join(root, f),
